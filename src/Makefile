@@ -149,6 +149,11 @@ XCFLAGS=
 #XCFLAGS+= -DLUA_USE_ASSERT
 #
 ##############################################################################
+#################################  MEMORY CONTROL  ###########################
+##############################################################################
+# Replace this variable to alter a memory control source module
+LJ_ALLOC=lj_alloc
+##############################################################################
 # You probably don't need to change anything below this line!
 ##############################################################################
 
@@ -495,7 +500,7 @@ LJCORE_O= lj_gc.o lj_err.o lj_char.o lj_bc.o lj_obj.o lj_buf.o \
 	  lj_asm.o lj_trace.o lj_gdbjit.o \
 	  lj_ctype.o lj_cdata.o lj_cconv.o lj_ccall.o lj_ccallback.o \
 	  lj_carith.o lj_clib.o lj_cparse.o \
-	  lj_lib.o lj_alloc.o lib_aux.o \
+	  lj_lib.o $(LJ_ALLOC).o lib_aux.o \
 	  $(LJLIB_O) lib_init.o
 
 LJVMCORE_O= $(LJVM_O) $(LJCORE_O)
